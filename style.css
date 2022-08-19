@@ -1,3 +1,27 @@
+:root {
+    /* German Palette */
+    --fusion-red: rgba(252, 92, 101, 0.1);
+    --orange-hibiscus: rgba(253, 150, 68, 1);
+    --flitatious: rgba(254, 211, 48, 0.1);
+    --reptile-green: rgba(38, 222, 129, 1);
+    --maximum-blue-green: rgba(43, 203, 186, 0.1);
+    --desire: rgba(235, 59, 90, 0.1);
+    --benniukon-bronze: rgba(250, 130, 49, 1);
+    --nyc-taxi: rgba(247, 183, 49, 0.1);
+    --algal-fuel: #20bf6b;
+    --turqoise-topaz: rgba(15, 185, 177, 1);
+    --high-blue: rgba(69, 170, 242, 0.1);
+    --c64-ntsc: #4b7bec;
+    --lighter-purple: #a55eea;
+    --twinkle-blue: #d1d8e0;
+    --blue-grey: #778ca3;
+    --boyzone: #2d98da;
+    --royal-blue: #3867d6;
+    --gloomy-purple: #8854d0;
+    --innuendo: #a5b1c2;
+    --blue-horizon: #4b6584;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -88,4 +112,68 @@ body {
 
 .black-key:nth-child(10) {
     left: 865px;
+}
+
+.white-key-note {
+    position: absolute;
+    bottom: 5px;
+    left: 25px;
+    font-weight: 550;
+}
+
+.black-key-note {
+    position: absolute;
+    top: 0;
+    left: 11px;
+    color: #FFF;
+    font-weight: 500;
+}
+
+.do:hover {
+    background-color: var(--fusion-red);
+}
+
+.doSharp:hover {
+    background-color: var(--orange-hibiscus);
+}
+
+.re:hover {
+    background-color: var(--flitatious);
+}
+
+.reSharp:hover {
+    background-color: var(--reptile-green);
+
+}
+
+.mi:hover {
+    background-color: var(--maximum-blue-green);
+}
+
+.fa:hover {
+    background-color: var(--desire);
+}
+
+.faSharp:hover {
+    background-color: var(--benniukon-bronze);
+}
+
+.sol:hover {
+    background-color: var(--nyc-taxi);
+}
+
+.solSharp:hover {
+    background-color: var(--algal-fuel);
+}
+
+.la:hover {
+    background-color: var(--algal-fuel);
+}
+
+.laSharp:hover {
+    background-color: var(--turqoise-topaz);
+}
+
+.si:hover {
+    background-color: var(--high-blue);
 }
