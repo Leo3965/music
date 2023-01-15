@@ -10,3 +10,16 @@ Rosa -> is-danger
 #titulo1, #titulo2, #titulo3 {
     color: var(--preto);
 }
+
+.butoes {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao {
+    display: flex;
+    gap: 4px;
+}
