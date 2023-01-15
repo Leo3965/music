@@ -41,7 +41,7 @@
                             Piano
                         </a>
                         <span class="navbar-item">
-              <a id="clickme" class="button is-dark is-inverted">
+              <a id="clickme" class="button is-danger is-inverted">
                 <span class="icon">
                   <i class="ph-heart-break"></i>
                 </span>
@@ -63,9 +63,9 @@
                 <div class="tile is-child box">
                     <p id="titulo1" class="title">Introduction </p>
                     <figure class="image is-16by9">
-                        <iframe class="has-ratio" width="640" height="360"
-                                src="https://www.youtube.com/embed/YE7VzlLtp-4" frameborder="0"
-                                allowfullscreen></iframe>
+                        <!--                        <iframe class="has-ratio" width="640" height="360"-->
+                        <!--                                src="https://www.youtube.com/embed/YE7VzlLtp-4" frameborder="0"-->
+                        <!--                                allowfullscreen></iframe>-->
                     </figure>
                 </div>
 
@@ -91,10 +91,15 @@
             <div class="tile is-parent">
                 <div class="tile is-child box">
                     <p id="titulo3" class="title">Staff</p>
-                    <figure class="image">
+                    <figure id="staff" class="image staff-container">
                         <img src="imgs/pentagrama.png">
-                        <progress class="progress is-small" value="20" max="100">100%</progress>
                     </figure>
+
+                    <div class="buttons">
+                        <button id="start" class="button is-danger">Start</button>
+                        <button id="pause" class="button is-light">Pause</button>
+                    </div>
+                    <progress id="progress-bar" class="progress is-small" value="0" max="100">100%</progress>
                 </div>
             </div>
         </div>
@@ -110,24 +115,12 @@
                     <li><a>Grid</a></li>
                     <li><a>Elements</a></li>
                     <li><a>Components</a></li>
-                    <li><a>Layout</a></li>
+                    <li><a target="_blank" href="https://www.instagram.com/leonardo.freiitas/">Léo Freitas</a></li>
                 </ul>
             </div>
         </nav>
     </div>
 </section>
-
-<footer class="footer">
-    <div class="content has-text-centered">
-        <p>
-            <strong>Music</strong> by <a target="_blank" href="https://www.instagram.com/leonardo.freiitas/">Léo
-            Freitas</a>. The source code is licensed
-            <a>MIT</a>. The website content
-            is licensed <a>CC BY NC SA 4.0</a>.
-        </p>
-    </div>
-</footer>
-
 
 <script src="screens/app.js"></script>
 </body>

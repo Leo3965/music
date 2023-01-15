@@ -1,6 +1,8 @@
 /*
 Azul -> is-link
 Rosa -> is-danger
+
+Circle: <i class="ph-circle note"></i>
 */
 
 :root {
@@ -9,6 +11,19 @@ Rosa -> is-danger
 
 #titulo1, #titulo2, #titulo3 {
     color: var(--preto);
+}
+
+.staff-container {
+    position: relative;
+}
+
+.staff-container .note {
+    height: 30px;
+    width: auto;
+}
+
+.note {
+    position: absolute;
 }
 
 .butoes {
