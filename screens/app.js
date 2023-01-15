@@ -1,0 +1,1 @@
+const clickBtn = document.querySelector('#clickme');
