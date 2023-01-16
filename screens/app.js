@@ -32,7 +32,7 @@ const notes = [
         "msg": {
             "part1": "FA",
             "strong": "C",
-            "part2": "E, que Dó do meu quarto"
+            "part2": "E, que Dó do meu quarto filho"
         }
     },
     {
@@ -80,7 +80,7 @@ const notes = [
         "msg": {
             "part1": "FAC",
             "strong": "E",
-            "part2": " Miau!"
+            "part2": " tu fala dorMIndo?"
         }
     },
     {
@@ -116,7 +116,7 @@ const notes = [
         "msg": {
             "part1": "",
             "strong": "F",
-            "part2": "ACE, Fala primeiro"
+            "part2": "ACE, FAla primeiro"
         }
     },
     {
@@ -145,6 +145,16 @@ const notes = [
     }
 ];
 
+// Key buttons
+const Abtn = document.querySelector('#A');
+const Bbtn = document.querySelector('#B');
+const Cbtn = document.querySelector('#C');
+const Dbtn = document.querySelector('#D');
+const Ebtn = document.querySelector('#E');
+const Fbtn = document.querySelector('#F');
+const Gbtn = document.querySelector('#G');
+const buttons = document.querySelectorAll('.key-btn');
+
 const content = document.querySelector('.content-wrapper');
 const clickMeBtn = document.querySelector('#clickme');
 const staffElement = document.querySelector('#staff');
@@ -154,6 +164,7 @@ const startBtn = document.querySelector('#start');
 const pauseBtn = document.querySelector('#pause');
 const warningMessage = document.querySelectorAll('.notification .delete');
 let warning = document.getElementById('warning-msg');
+let gameover = document.getElementById('game-over');
 
 const seconds = 500;
 let note;
@@ -161,6 +172,37 @@ let time = -10;
 let timer;
 let isPaused = false;
 let isRunning = false;
+let score = 0;
+
+buttons.forEach(b => {
+    b.addEventListener('click', () => {
+        handleKeyButton(b.innerText);
+    });
+});
+
+const handleKeyButton = function (key) {
+    if (isRunning) {
+        if (key === note.note) {
+            score++;
+            nextKey();
+        } else {
+            gameOver();
+        }
+    }
+}
+
+const nextKey = function () {
+    resetElements(false);
+    init();
+}
+
+const gameOver = function () {
+    const cachedScore = score;
+    score = 0;
+    showGameOver(cachedScore);
+    resetElements(true);
+    console.log('fim de jogo');
+}
 
 /* Delete warning message function*/
 document.addEventListener('DOMContentLoaded', () => {
@@ -174,12 +216,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 startBtn.addEventListener('click', function () {
+    init();
+});
+
+const init = function () {
     if (!isRunning) {
         isRunning = true;
         addNote(randomNote());
         timer = setIntervalAndExecute(incrementTime, seconds);
     }
-});
+}
 
 pauseBtn.addEventListener('click', function () {
     pauseUnpause();
@@ -205,8 +251,9 @@ const removeNote = function () {
     notes.remove();
 }
 
-const resetElements = function () {
-    addImageToScreen('../imgs/trebel-clef.png');
+const resetElements = function (withImg) {
+    if (withImg) addImageToScreen('../imgs/trebel-clef.png');
+    stopCounter();
     progressBar.value = 0;
     isPaused = false;
     isRunning = false;
@@ -223,6 +270,7 @@ const addImageToScreen = function (imgPath) {
 }
 
 const showWarningMessage = function () {
+    isRunning = false;
     content.insertAdjacentHTML('beforebegin',
         '<!-- Notification -->\n' +
         '<div id="warning-msg" class="notification-box">\n' +
@@ -231,18 +279,41 @@ const showWarningMessage = function () {
         `        ${note.msg.part1}<strong>${note.msg.strong}</strong>${note.msg.part2}` +
         '    </div>\n' +
         '</div>');
+
     warning = document.getElementById('warning-msg');
 
     warning.addEventListener('click', () => {
         warning.remove();
-        resetElements();
+        resetElements(true);
+        score = 0;
+    });
+}
+
+const showGameOver = function (score) {
+    isRunning = false;
+    content.insertAdjacentHTML('beforebegin',
+        '<!-- Notification -->\n' +
+        '<div id="game-over" class="game-over">\n' +
+        '    <div class="notification is-danger is-light">\n' +
+        '        <button class="delete"></button>\n' +
+        `        Parabéns,` +
+        `        Você marcou um score de: <strong>${score}</strong>` +
+        '    </div>\n' +
+        '</div>');
+    gameover = document.getElementById('game-over');
+
+    gameover.addEventListener('click', () => {
+        gameover.remove();
+        resetElements(true);
+        score = 0;
     });
 }
 
 const isAnswerOnTime = function () {
-    if (time > 90) {
+    if (time === 100) {
         stopCounter();
         // resetElements();
+        if (score > 5) showGameOver(score);
         showWarningMessage();
     }
 }

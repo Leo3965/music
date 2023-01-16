@@ -19,6 +19,16 @@ body {
     width: 90%;
     top: 10%;
     justify-content: center;
+    z-index: 100;
+}
+
+.game-over {
+    position: absolute;
+    display: flex;
+    width: 90%;
+    top: 20%;
+    justify-content: center;
+    z-index: 200;
 }
 
 #titulo1, #titulo2, #titulo3 {
