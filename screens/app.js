@@ -145,6 +145,16 @@ const notes = [
     }
 ];
 
+const passagens = [
+    'II Crônicas 20:3-4, "Então, Josafá temeu e pôs-se a buscar o SENHOR, e apregoou jejum em todo o Judá."',
+    'Salmo 1:1-2, "Bem-aventurado o varão que não anda segundo o conselho dos ímpios, nem se detém no caminho dos pecadores, nem se assenta na roda dos escarnecedores."',
+    'Salmo 69:13 "Eu, porém, faço a minha oração a ti, SENHOR, num tempo aceitável; ó Deus, ouve-me segundo a grandeza da tua misericórdia, segundo a verdade da tua salvação."',
+    'Salmo 142:1-7 "Com a minha voz clamei ao SENHOR, com a minha voz ao SENHOR supliquei."',
+    'Isaías 7:14 "Portanto, o mesmo Senhor vos dará um sinal: eis uma virgem conceberá, e dará à luz um filho, e será o seu nome Emanuel."',
+    'Romanos 10:17 "De sorte que a fé é pelo ouvir, e o ouvir pela palavra de Deus"',
+    'Romanos 11:36 "Porque dele, e por ele, e para ele são todas as coisas, glória, pois a ele eternamente. Amém!"'
+];
+
 // Key buttons
 const Abtn = document.querySelector('#A');
 const Bbtn = document.querySelector('#B');
@@ -156,6 +166,8 @@ const Gbtn = document.querySelector('#G');
 const buttons = document.querySelectorAll('.key-btn');
 
 const content = document.querySelector('.content-wrapper');
+const heroContent = document.querySelector('#hero-content');
+const darkModeBtn = document.querySelector('#dark-mode');
 const clickMeBtn = document.querySelector('#clickme');
 const staffElement = document.querySelector('#staff');
 const staffImg = document.querySelector('#staff-img');
@@ -172,12 +184,34 @@ let time = -10;
 let timer;
 let isPaused = false;
 let isRunning = false;
+let isDark = false;
+let theme = 'is-danger';
 let score = 0;
 
 buttons.forEach(b => {
     b.addEventListener('click', () => {
         handleKeyButton(b.innerText);
     });
+});
+
+const toggleDark = function () {
+    if (isDark) {
+        isDark = false;
+        theme = 'is-danger';
+    } else {
+        isDark = true;
+        theme = 'is-dark';
+    }
+}
+darkModeBtn.addEventListener('click', () => {
+    heroContent.classList.remove(theme);
+    buttons.forEach(b => b.classList.remove(theme));
+    startBtn.classList.remove(theme);
+    toggleDark();
+
+    startBtn.classList.add(theme);
+    heroContent.classList.add(theme);
+    buttons.forEach(b => b.classList.add(theme));
 });
 
 const handleKeyButton = function (key) {
@@ -241,6 +275,33 @@ const randomNote = function () {
     const randomIndex = Math.floor(Math.random() * (notesNum));
     note = notes[randomIndex];
 }
+
+clickMeBtn.addEventListener('click', () => {
+    escreverPassagem(obterPassagem());
+});
+
+const obterPassagem = function () {
+    const numPassagens = passagens.length;
+    const aleatorio = Math.floor(Math.random() * numPassagens);
+    return passagens[aleatorio];
+}
+
+const escreverPassagem = function (passagem) {
+    content.insertAdjacentHTML('beforebegin',
+        '<div id="passagem" class="notification-box">\n' +
+        '    <div class="notification is-info is-light">\n' +
+        '        <button class="delete"></button>\n' +
+        `        ${passagem}` +
+        '    </div>\n' +
+        '</div>');
+
+    passagem = document.getElementById('passagem');
+
+    passagem.addEventListener('click', () => {
+        passagem.remove();
+    });
+}
+
 /* Este método adiciona uma nota no pentagrama */
 const addNote = function () {
     addImageToScreen(note.image);
@@ -297,7 +358,7 @@ const showGameOver = function (score) {
         '    <div class="notification is-danger is-light">\n' +
         '        <button class="delete"></button>\n' +
         `        Parabéns,` +
-        `        Você marcou um score de: <strong>${score}</strong>` +
+        `        Você marcou um score de: <strong>${score}</strong> ponto(s)` +
         '    </div>\n' +
         '</div>');
     gameover = document.getElementById('game-over');

@@ -13,6 +13,10 @@ body {
     position: relative;
 }
 
+.logo-site {
+    filter: invert(100%) sepia(0%) saturate(7493%) hue-rotate(297deg) brightness(101%) contrast(103%);
+}
+
 .notification-box {
     position: absolute;
     display: flex;
