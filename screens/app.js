@@ -185,6 +185,7 @@ let timer;
 let isPaused = false;
 let isRunning = false;
 let isDark = false;
+let hasPassagem = false;
 let theme = 'is-danger';
 let score = 0;
 
@@ -287,19 +288,23 @@ const obterPassagem = function () {
 }
 
 const escreverPassagem = function (passagem) {
-    content.insertAdjacentHTML('beforebegin',
-        '<div id="passagem" class="notification-box">\n' +
-        '    <div class="notification is-info is-light">\n' +
-        '        <button class="delete"></button>\n' +
-        `        ${passagem}` +
-        '    </div>\n' +
-        '</div>');
+    if (!hasPassagem) {
+        hasPassagem = true;
+        content.insertAdjacentHTML('beforebegin',
+            '<div id="passagem" class="passagem">\n' +
+            '    <div class="notification is-info is-light">\n' +
+            '        <button class="delete"></button>\n' +
+            `        ${passagem}` +
+            '    </div>\n' +
+            '</div>');
 
-    passagem = document.getElementById('passagem');
+        passagem = document.getElementById('passagem');
 
-    passagem.addEventListener('click', () => {
-        passagem.remove();
-    });
+        passagem.addEventListener('click', () => {
+            passagem.remove();
+            hasPassagem = false;
+        });
+    }
 }
 
 /* Este método adiciona uma nota no pentagrama */

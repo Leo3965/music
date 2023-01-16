@@ -26,6 +26,15 @@ body {
     z-index: 100;
 }
 
+.passagem {
+    position: absolute;
+    display: flex;
+    width: 90%;
+    top: 20%;
+    justify-content: center;
+    z-index: 100;
+}
+
 .game-over {
     position: absolute;
     display: flex;
