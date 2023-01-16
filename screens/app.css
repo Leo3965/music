@@ -9,6 +9,18 @@ Circle: <i class="ph-circle note"></i>
     --preto: rgba(52, 58, 64, 1);
 }
 
+body {
+    position: relative;
+}
+
+.notification-box {
+    position: absolute;
+    display: flex;
+    width: 90%;
+    top: 10%;
+    justify-content: center;
+}
+
 #titulo1, #titulo2, #titulo3 {
     color: var(--preto);
 }
