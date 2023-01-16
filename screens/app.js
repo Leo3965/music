@@ -4,7 +4,7 @@ const notes = [
         "bottom": 206,
         "left": 160,
         "note": "A",
-        "image": "A.png",
+        "image": "A-min.png",
         "msg": {
             "part1": "F",
             "strong": "A",
@@ -16,7 +16,7 @@ const notes = [
         "bottom": 220,
         "left": 160,
         "note": "B",
-        "image": "B.png",
+        "image": "B-min.png",
         "msg": {
             "part1": "Poxa! ",
             "strong": "Si",
@@ -28,7 +28,7 @@ const notes = [
         "bottom": 233,
         "left": 160,
         "note": "C",
-        "image": "C.png",
+        "image": "C-min.png",
         "msg": {
             "part1": "FA",
             "strong": "C",
@@ -40,7 +40,7 @@ const notes = [
         "bottom": 233,
         "left": 160,
         "note": "C",
-        "image": "C0.png",
+        "image": "C0-min.png",
         "msg": {
             "part1": "=( ",
             "strong": "Do",
@@ -52,7 +52,7 @@ const notes = [
         "bottom": 246,
         "left": 160,
         "note": "D",
-        "image": "D.png",
+        "image": "D-min.png",
         "msg": {
             "part1": "ca",
             "strong": "Re",
@@ -64,7 +64,7 @@ const notes = [
         "bottom": 246,
         "left": 160,
         "note": "D",
-        "image": "D0.png",
+        "image": "D0-min.png",
         "msg": {
             "part1": "Melhor começar de ",
             "strong": "Re",
@@ -76,7 +76,7 @@ const notes = [
         "bottom": 260,
         "left": 160,
         "note": "E",
-        "image": "E.png",
+        "image": "E-min.png",
         "msg": {
             "part1": "FAC",
             "strong": "E",
@@ -88,7 +88,7 @@ const notes = [
         "bottom": 260,
         "left": 160,
         "note": "E",
-        "image": "E0.png",
+        "image": "E0-min.png",
         "msg": {
             "part1": "Pfv, ",
             "strong": "Mi",
@@ -100,7 +100,7 @@ const notes = [
         "bottom": 273,
         "left": 160,
         "note": "F",
-        "image": "F.png",
+        "image": "F-min.png",
         "msg": {
             "part1": "Eu ",
             "strong": "F",
@@ -112,7 +112,7 @@ const notes = [
         "bottom": 273,
         "left": 160,
         "note": "F",
-        "image": "F0.png",
+        "image": "F0-min.png",
         "msg": {
             "part1": "",
             "strong": "F",
@@ -124,7 +124,7 @@ const notes = [
         "bottom": 193,
         "left": 160,
         "note": "G",
-        "image": "G.png",
+        "image": "G-min.png",
         "msg": {
             "part1": "Você é o meu ",
             "strong": "Sol",
@@ -136,7 +136,7 @@ const notes = [
         "bottom": 193,
         "left": 160,
         "note": "G",
-        "image": "G2.png",
+        "image": "G2-min.png",
         "msg": {
             "part1": "Ah esse é o ",
             "strong": "Sol",
@@ -313,7 +313,7 @@ const removeNote = function () {
 }
 
 const resetElements = function (withImg) {
-    if (withImg) addImageToScreen('../imgs/trebel-clef.png');
+    if (withImg) addImageToScreen('../imgs/trebel-clef-min.png');
     stopCounter();
     progressBar.value = 0;
     isPaused = false;
